@@ -56,8 +56,10 @@ function gptQueryCalendarEvent(q) {
   }
   
   const systemQuery = "You are a helpful personal assistant that manages the shared calendar of a family. You keep an eye on important dates that should not be missed, especially regarding kids.";
-  
-  const prompt = "Analyse the email below and identify if there is a need to create Google Calendar event. If yes, repond in a JSON with attributes needed to create the Google Calendar event, with the reminder 48 hours ahead. Otherwise response with an empty but valid JSON. Don't translate the email, use the language of the email, preferrably Czech language, if possible. If the text does not specify a year, assume the year 2024, timezone Europe/Prague. Use complete email body to describe the calendar event. Your answer is plain JSON, without any decorators\nEmail\n-----\n{}";
+  const today = new Date();
+  const currentYear = today.getFullYear();
+
+  const prompt = "Analyse the email below and identify if there is a need to create Google Calendar event. If yes, repond in a JSON with attributes needed to create the Google Calendar event, with the reminder 2880 minutes ahead. Otherwise response with an empty but valid JSON. Don't translate the email, use the language of the email, preferrably Czech language, if possible. If the text does not specify a year, assume the year " + currentYear + ", timezone Europe/Prague. Use complete email body to describe the calendar event. Your answer is plain JSON, without any decorators\nEmail\n-----\n{}";
 
   const userQuery = prompt.replace("{}", q);
 
