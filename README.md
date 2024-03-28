@@ -54,7 +54,7 @@ Before you begin, ensure you have the following:
    clasp push
    ```
 
-5. To deploy your project, first create a deployment:
+5. If you don't have a project yet, first create a deployment:
 
    ```bash
    clasp deploy --description "Your deployment description"
